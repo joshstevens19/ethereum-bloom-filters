@@ -1,0 +1,6 @@
+/src
+/coverage
+/node_modules
+/tsconfig.json
+/jest.config.js
+/tslint.json

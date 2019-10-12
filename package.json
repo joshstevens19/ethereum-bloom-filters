@@ -1,0 +1,31 @@
+{
+  "name": "ethereum-bloom-filters",
+  "version": "1.0.0",
+  "description": "Ability to test bloom filters for ethereum.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshstevens19/ethereum-bloom-filters.git"
+  },
+  "author": "joshstevens19@hotmail.co.uk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshstevens19/ethereum-bloom-filters/issues"
+  },
+  "homepage": "https://github.com/joshstevens19/ethereum-bloom-filters#readme",
+  "dependencies": {
+    "ethers": "^4.0.37"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  }
+}
