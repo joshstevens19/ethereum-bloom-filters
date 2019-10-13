@@ -44,6 +44,26 @@ import {
 } from 'ethereum-bloom-filters';
 ```
 
+### Including within web application which doesn't use any transpiler
+
+When using angular, react or vuejs these frameworks handle dependencies and transpile them so they work on the web, so if you're using any of them just use the above code snippets to get this working in your app.
+
+If your using a standard web application you can go [here](https://github.com/joshstevens19/ethereum-bloom-filters/tree/master/web-scripts) to copy any of the versioned script files and drop it into your application referencing it a script tag in the head of the website.
+
+This will expose the library as a global variable named `ethereumBloomFilters`, you can the execute the methods through this variable:
+
+```js
+ethereumBloomFilters.isBloom(...)
+ethereumBloomFilters.isUserEthereumAddressInBloom(...)
+ethereumBloomFilters.isContractAddressInBloom(...)
+ethereumBloomFilters.isTopicInBloom(...)
+ethereumBloomFilters.isInBloom(...)
+```
+
+You can find out more about the functions parameters below.
+
+We do not expose an cdn for security reasons.
+
 ## What are bloom filters?
 
 A Bloom filter is a probabilistic, space-efficient data structure used for fast checks of set membership. That probably doesn’t mean much to you yet, and so let’s explore how bloom filters might be used.

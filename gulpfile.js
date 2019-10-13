@@ -18,7 +18,8 @@ gulp.task('default', done => {
   const entry = 'dist/index.js';
 
   browserify({
-    entries: entry
+    entries: entry,
+    standalone: 'ethereumBloomFilters'
   })
     .bundle()
     .pipe(source(`ethereum-bloom-filters-${package.version}.min.js`))
@@ -27,7 +28,8 @@ gulp.task('default', done => {
     .pipe(gulp.dest(versionFolder));
 
   browserify({
-    entries: entry
+    entries: entry,
+    standalone: 'ethereumBloomFilters'
   })
     .bundle()
     .pipe(source(`ethereum-bloom-filters-latest.min.js`))
