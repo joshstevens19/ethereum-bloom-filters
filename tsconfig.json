@@ -61,6 +61,6 @@
     "**/*.spec.ts",
     "**/*.mocks.ts",
     "dist",
-    "src/jest",
+    "src/jest"
   ]
 }

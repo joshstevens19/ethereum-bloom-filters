@@ -1,6 +1,6 @@
 {
   "name": "ethereum-bloom-filters",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ability to test bloom filters for ethereum.",
   "main": "dist/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
     "bloom filters"
   ],
   "dependencies": {
-    "ethers": "^4.0.37"
+    "js-sha3": "^0.8.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",

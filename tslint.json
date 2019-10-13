@@ -1,18 +1,13 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {},
-    "rules": {
-        "no-empty": false,
-        "variable-name": false,
-        "prefer-for-of": false,
-        "object-literal-sort-keys": false,
-        "quotemark": [
-            true,
-            "single"
-        ]
-    },
-    "rulesDirectory": []
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {},
+  "rules": {
+    "no-empty": false,
+    "variable-name": false,
+    "prefer-for-of": false,
+    "object-literal-sort-keys": false,
+    "quotemark": [true, "single"]
+  },
+  "rulesDirectory": []
 }
