@@ -39,6 +39,7 @@ import {
   isBloom,
   isUserEthereumAddressInBloom,
   isContractAddressInBloom,
+  isTopic,
   isTopicInBloom,
   isInBloom
 } from 'ethereum-bloom-filters';
@@ -56,6 +57,7 @@ This will expose the library as a global variable named `ethereumBloomFilters`, 
 ethereumBloomFilters.isBloom(...)
 ethereumBloomFilters.isUserEthereumAddressInBloom(...)
 ethereumBloomFilters.isContractAddressInBloom(...)
+ethereumBloomFilters.isTopic(...)
 ethereumBloomFilters.isTopicInBloom(...)
 ethereumBloomFilters.isInBloom(...)
 ```
@@ -105,6 +107,14 @@ isContractAddressInBloom(bloom: string, contractAddress: string): boolean;
 
 Returns true if the contract address is part of the given bloom
 note: false positives are possible.
+
+### isTopic
+
+```ts
+isTopic(topic: string): boolean;
+```
+
+Returns true if the topic is valid
 
 ### isTopicInBloom
 

@@ -1,4 +1,4 @@
-import { keccak256, bytesToHex, padLeft } from './utils';
+import { bytesToHex, keccak256, padLeft } from './utils';
 
 /**
  * Returns true if the bloom is a valid bloom
@@ -45,7 +45,7 @@ export function isInBloom(bloom: string, value: string | Uint8Array): boolean {
 
     // test if bitpos in bloom is active
     const code = codePointToInt(
-      bloom.charCodeAt(bloom.length - 1 - Math.floor(bitpos / 4))
+      bloom.charCodeAt(bloom.length - 1 - Math.floor(bitpos / 4)),
     );
     const offset = 1 << bitpos % 4;
 
@@ -88,7 +88,7 @@ function codePointToInt(codePoint: number): number {
  */
 export function isUserEthereumAddressInBloom(
   bloom: string,
-  ethereumAddress: string
+  ethereumAddress: string,
 ): boolean {
   if (!isBloom(bloom)) {
     throw new Error('Invalid bloom given');
@@ -117,7 +117,7 @@ export function isUserEthereumAddressInBloom(
  */
 export function isContractAddressInBloom(
   bloom: string,
-  contractAddress: string
+  contractAddress: string,
 ): boolean {
   if (!isBloom(bloom)) {
     throw new Error('Invalid bloom given');
@@ -152,7 +152,7 @@ export function isTopicInBloom(bloom: string, topic: string): boolean {
  * Checks if its a valid topic
  * @param topic encoded hex topic
  */
-function isTopic(topic: string): boolean {
+export function isTopic(topic: string): boolean {
   if (typeof topic !== 'string') {
     return false;
   }

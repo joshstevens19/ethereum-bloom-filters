@@ -1,10 +1,11 @@
 import {
   isAddress,
   isBloom,
-  isInBloom,
-  isUserEthereumAddressInBloom,
   isContractAddressInBloom,
-  isTopicInBloom
+  isInBloom,
+  isTopic,
+  isTopicInBloom,
+  isUserEthereumAddressInBloom,
 } from './index';
 import { toByteArray } from './utils';
 
@@ -14,7 +15,7 @@ const bloomFilter =
 describe('isAddress', () => {
   it('should return true with a valid ethereum address', () => {
     expect(isAddress('0x494bfa3a4576ba6cfe835b0deb78834f0c3e3994')).toEqual(
-      true
+      true,
     );
   });
 
@@ -67,7 +68,7 @@ describe('isBloom', () => {
 describe('isInBloom', () => {
   it('should return true if value is in bloom passing in hex string', () => {
     expect(
-      isInBloom(bloomFilter, '0x58a4884182d9e835597f405e5f258290e46ae7c2')
+      isInBloom(bloomFilter, '0x58a4884182d9e835597f405e5f258290e46ae7c2'),
     ).toEqual(true);
   });
 
@@ -75,14 +76,14 @@ describe('isInBloom', () => {
     expect(
       isInBloom(
         bloomFilter,
-        toByteArray('0x58a4884182d9e835597f405e5f258290e46ae7c2')
-      )
+        toByteArray('0x58a4884182d9e835597f405e5f258290e46ae7c2'),
+      ),
     ).toEqual(true);
   });
 
   it('should return false if value is not in bloom', () => {
     expect(
-      isInBloom(bloomFilter, '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3996')
+      isInBloom(bloomFilter, '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3996'),
     ).toEqual(false);
   });
 });
@@ -92,7 +93,7 @@ describe('isUserEthereumAddressInBloom', () => {
     expect(() => {
       isUserEthereumAddressInBloom(
         'invalid',
-        '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3994'
+        '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3994',
       );
     }).toThrowError('Invalid bloom given');
   });
@@ -128,8 +129,8 @@ describe('isUserEthereumAddressInBloom', () => {
     expect(
       isUserEthereumAddressInBloom(
         bloomFilter,
-        '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3994'
-      )
+        '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3994',
+      ),
     ).toEqual(true);
   });
 
@@ -137,8 +138,8 @@ describe('isUserEthereumAddressInBloom', () => {
     expect(
       isUserEthereumAddressInBloom(
         bloomFilter,
-        '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3996'
-      )
+        '0x494bfa3a4576ba6cfe835b0deb78834f0c3e3996',
+      ),
     ).toEqual(false);
   });
 });
@@ -148,7 +149,7 @@ describe('isContractAddressInBloom', () => {
     expect(() => {
       isContractAddressInBloom(
         'invalid',
-        '0x58a4884182d9e835597f405e5f258290e46ae7c2'
+        '0x58a4884182d9e835597f405e5f258290e46ae7c2',
       );
     }).toThrowError('Invalid bloom given');
   });
@@ -184,8 +185,8 @@ describe('isContractAddressInBloom', () => {
     expect(
       isContractAddressInBloom(
         bloomFilter,
-        '0x58a4884182d9e835597f405e5f258290e46ae7c2'
-      )
+        '0x58a4884182d9e835597f405e5f258290e46ae7c2',
+      ),
     ).toEqual(true);
   });
 
@@ -193,21 +194,21 @@ describe('isContractAddressInBloom', () => {
     expect(
       isContractAddressInBloom(
         bloomFilter,
-        '0x58a4884182d9e835597f405e5f258290e46ae7c1'
-      )
+        '0x58a4884182d9e835597f405e5f258290e46ae7c1',
+      ),
     ).toEqual(false);
   });
 });
 
 describe('isTopicInBloom', () => {
-  var topicBloom =
+  const topicBloom =
     '0x0020008400000010000000000400000200000008000000000010000000002000000080000020000000080004000000010000000000000040000000000000000000000001000200008000000d000000000010000400000400000100000000000001400008220000000000004000040802004000200000000000000010000041000000020100008000000000000000000000000010000000080000000000800900000000000000000000000000100000800000000000000c28000000000000010000000002000040002000000080000000000000000000000020120020000020200000000040000000000000040000000400000000000000000000020000000000';
 
   it('should throw error if bloom is not valid', () => {
     expect(() => {
       isTopicInBloom(
         'invalid',
-        '0x4d61726b65745061792e696f206973206465706c6f79696e6720536d61727420'
+        '0x4d61726b65745061792e696f206973206465706c6f79696e6720536d61727420',
       );
     }).toThrowError('Invalid bloom given');
   });
@@ -243,8 +244,8 @@ describe('isTopicInBloom', () => {
     expect(
       isTopicInBloom(
         topicBloom,
-        '0x000000000000000000000000b3bb037d2f2341a1c2775d51909a3d944597987d'
-      )
+        '0x000000000000000000000000b3bb037d2f2341a1c2775d51909a3d944597987d',
+      ),
     ).toEqual(true);
   });
 
@@ -252,8 +253,37 @@ describe('isTopicInBloom', () => {
     expect(
       isTopicInBloom(
         topicBloom,
-        '0x4d61726b65745061792e696f206973206465706c6f79696e6720536d61727420'
-      )
+        '0x4d61726b65745061792e696f206973206465706c6f79696e6720536d61727420',
+      ),
     ).toEqual(false);
+  });
+});
+
+describe('isTopic', () => {
+  it('should return false if topic is not valid', () => {
+    expect(isTopic('0x4d61')).toEqual(false);
+  });
+
+  it('should return false if topic is a number', () => {
+    // @ts-ignore
+    expect(isTopic(233)).toEqual(false);
+  });
+
+  it('should return false if topic is a bool', () => {
+    // @ts-ignore
+    expect(isTopic(false)).toEqual(false);
+  });
+
+  it('should return false if topic is a object', () => {
+    // @ts-ignore
+    expect(isTopic({})).toEqual(false);
+  });
+
+  it('should return true if topic is valid', () => {
+    expect(
+      isTopic(
+        '0x000000000000000000000000b3bb037d2f2341a1c2775d51909a3d944597987d',
+      ),
+    ).toEqual(true);
   });
 });
