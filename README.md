@@ -1,3 +1,6 @@
+[![npm version](https://badge.fury.io/js/ethereum-bloom-filters.svg)](https://badge.fury.io/js/ethereum-bloom-filters)
+![downloads](https://img.shields.io/npm/dw/ethereum-bloom-filters)
+
 # ethereum-bloom-filters
 
 A lightweight bloom filter client which allows you to test ethereum blooms for fast checks of set membership.
