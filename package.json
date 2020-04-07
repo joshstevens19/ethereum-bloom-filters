@@ -1,10 +1,10 @@
 {
   "name": "ethereum-bloom-filters",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Ability to test bloom filters for ethereum.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && build-web-scripts",
+    "build": "tsc && npm run build-web-scripts",
     "watch": "tsc --watch",
     "test": "jest",
     "publish-sdk": "npm run build && npm publish --access public",
