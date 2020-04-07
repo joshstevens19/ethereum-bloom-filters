@@ -27,7 +27,7 @@ export const padLeft = (value: string, chars: number) => {
  * @param bytes The bytes
  */
 export function bytesToHex(bytes: Uint8Array): string {
-  let hex = [];
+  const hex: string[] = [];
 
   for (let i = 0; i < bytes.length; i++) {
     hex.push((bytes[i] >>> 4).toString(16));
@@ -47,7 +47,7 @@ export function toByteArray(value: string | ArrayLike<number>): Uint8Array {
   }
 
   if (typeof value === 'string') {
-    let match = value.match(/^(0x)?[0-9a-fA-F]*$/);
+    const match = value.match(/^(0x)?[0-9a-fA-F]*$/);
 
     if (!match) {
       throw new Error('invalid hexidecimal string');
@@ -84,6 +84,7 @@ export function toByteArray(value: string | ArrayLike<number>): Uint8Array {
 function isByteArray(value: any): value is string | ArrayLike<number> {
   if (
     !value ||
+    // tslint:disable-next-line: radix
     parseInt(String(value.length)) != value.length ||
     typeof value === 'string'
   ) {
@@ -92,6 +93,7 @@ function isByteArray(value: any): value is string | ArrayLike<number> {
 
   for (let i = 0; i < value.length; i++) {
     const v = value[i];
+    // tslint:disable-next-line: radix
     if (v < 0 || v >= 256 || parseInt(String(v)) != v) {
       return false;
     }
@@ -105,11 +107,11 @@ function isByteArray(value: any): value is string | ArrayLike<number> {
  * @param array The array
  */
 function addSlice(array: Uint8Array): Uint8Array {
-  if (array.slice) {
+  if (array.slice !== undefined) {
     return array;
   }
 
-  array.slice = function() {
+  array.slice = () => {
     const args: any = Array.prototype.slice.call(arguments);
     return addSlice(new Uint8Array(Array.prototype.slice.apply(array, args)));
   };
