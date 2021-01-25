@@ -1,6 +1,6 @@
 {
   "name": "ethereum-bloom-filters",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Ability to test bloom filters for ethereum.",
   "main": "dist/index.js",
   "scripts": {
