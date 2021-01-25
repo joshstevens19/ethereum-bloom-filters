@@ -44,7 +44,7 @@ import {
   isContractAddressInBloom,
   isTopic,
   isTopicInBloom,
-  isInBloom
+  isInBloom,
 } from 'ethereum-bloom-filters';
 ```
 
@@ -82,6 +82,10 @@ Later, when we want to check if an element is in the set, we simply hash the ele
 ## ethereum-bloom-filters benefits with an real life example
 
 A ethereum real life example in where this is useful is if you want to update a users balance on every new block so it stays as close to real time as possible. Without using a bloom filter on every new block you would have to force the balances even if that user may not of had any activity within that block. But if you use the logBlooms from the block you can test the bloom filter against the users ethereum address before you do any more slow operations, this will dramatically decrease the amount of calls you do as you will only be doing those extra operations if that ethereum address is within that block (minus the false positives outcome which will be negligible). This will be highly performant for your app.
+
+## Requirements for blooms to be queryable
+
+Blooms do not work with eth transactions (purely sending eth), eth transactions do not emit logs so do not exist in the bloom filter. This is what ethereum did purposely but it means you should query the eth balance every block to make sure it's in sync. Blooms will only work if the transaction emits an event which then ends up in the logs. The bloom filter is there to help you find logs. A contract can be written which does not emit an event and in that case, would not be queryable from a bloom filter. The erc20 token spec requires you to fire an event on `approval` and `transfer` so blooms will work for `approval` and `transfer` for ALL erc20 tokens, this will be most people's primary use-case. Saying that this can be used in any way you want with any use-case as long as events are emitted you it's queryable.
 
 ## Functions
 
