@@ -35,7 +35,7 @@
     "browserify": "^16.5.0",
     "gulp": "^4.0.2",
     "gulp-uglify-es": "^3.0.0",
-    "jest": "^24.9.0",
+    "jest": "^29.3.1",
     "ts-jest": "^24.1.0",
     "tslint": "^5.20.0",
     "typescript": "^3.6.4",
