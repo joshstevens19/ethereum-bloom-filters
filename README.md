@@ -5,7 +5,7 @@
 
 A lightweight bloom filter client which allows you to test ethereum blooms for fast checks of set membership.
 
-This package only has 1 dependency which is on `js-sha3` which has no dependencies on at all.
+This package only has 1 dependency which is on `@noble/hashes` which has no dependencies on at all and is funded by ethereum foundation.
 
 ## Installation
 
