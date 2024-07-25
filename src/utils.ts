@@ -1,4 +1,5 @@
 import { keccak_256 } from '@noble/hashes/sha3';
+import { bytesToHex as toHex } from '@noble/hashes/utils';
 
 /**
  * Keccak256 hash
@@ -27,14 +28,7 @@ export const padLeft = (value: string, chars: number) => {
  * @param bytes The bytes
  */
 export function bytesToHex(bytes: Uint8Array): string {
-  const hex: string[] = [];
-
-  for (let i = 0; i < bytes.length; i++) {
-    hex.push((bytes[i] >>> 4).toString(16));
-    hex.push((bytes[i] & 0xf).toString(16));
-  }
-
-  return `0x${hex.join('').replace(/^0+/, '')}`;
+  return "0x" + toHex(bytes);
 }
 
 /**
