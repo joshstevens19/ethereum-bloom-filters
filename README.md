@@ -7,7 +7,7 @@ A lightweight bloom filter client which allows you to test ethereum blooms for f
 
 This package only has 1 dependency which is on `@noble/hashes` which has no dependencies on at all and is funded by ethereum foundation.
 
-## Installation
+## Installation 
 
 ### npm:
 
