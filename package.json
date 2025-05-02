@@ -1,7 +1,7 @@
 {
   "name": "ethereum-bloom-filters",
   "version": "1.2.0",
-  "description": "Ability to test bloom filters for ethereum.",
+  "description": "A lightweight bloom filter client which allows you to test ethereum blooms for fast checks of set membership.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc && npm run build-web-scripts",
